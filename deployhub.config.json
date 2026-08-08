@@ -1,0 +1,60 @@
+{
+  "project": "demo-express-project",
+  "version": "1.0.0",
+  "projectType": "backend",
+  "artifact": true,
+  "storage": [
+    "aws"
+  ],
+  "defaultEnvironment": "default",
+  "unprefixedSecretEnvironment": "default",
+  "legacyHistoryMigrated": true,
+  "environments": {
+    "default": {
+      "enabled": true,
+      "method": "ec2",
+      "trigger": "push",
+      "config": {
+        "deploymentType": "server",
+        "host": "3.109.5.217",
+        "user": "ec2-user",
+        "keyPath": "C:\\User\\diabu\\Downloads\\deployhub test key pair.pem",
+        "sshPort": 22,
+        "ec2InstanceId": "i-0c72f186b2a641fc0",
+        "awsRegion": "ap-south-1",
+        "deployPath": "/var/www/demo-express-project",
+        "path": "/var/www/demo-express-project",
+        "appName": "demo-express-project",
+        "framework": "express",
+        "port": 3000
+      }
+    }
+  },
+  "healthCheck": {
+    "url": "http://localhost:3000/health",
+    "timeout": 30
+  },
+  "notifications": {
+    "slack": false,
+    "email": false,
+    "webhook": false
+  },
+  "pipeline": {
+    "test": true,
+    "docker": false,
+    "deploy": true,
+    "verify": true,
+    "notify": false
+  },
+  "artifactRetention": 10,
+  "cli": {
+    "source": "npm:@akash-chowdhury-24/deployhub"
+  },
+  "framework": "express",
+  "language": "node",
+  "buildCommand": null,
+  "startCommand": "npm start",
+  "buildOutput": ".",
+  "port": 3000,
+  "docker": false
+}
