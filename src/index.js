@@ -15,6 +15,9 @@ app.use("/api", routes);
 app.get("/", (req, res) => {
   res.json({ message: "Express server is running Akash" });
 });
+// app.get("/health", (req, res) => {
+//   res.json({ status: "ok", timestamp: new Date().toISOString() });
+// });
 
 app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
@@ -26,5 +29,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://43.205.116.137:${PORT}`);
 });
