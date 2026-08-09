@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", routes);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Express server is running Akash dev only" });
+  res.json({ message: "Express server is running Akash dev and prod" });
 });
 // app.get("/health", (req, res) => {
 //   res.json({ status: "ok", timestamp: new Date().toISOString() });

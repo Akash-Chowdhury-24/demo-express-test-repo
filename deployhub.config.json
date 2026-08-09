@@ -32,7 +32,7 @@
     "production": {
       "enabled": true,
       "method": "ec2",
-      "trigger": "manual",
+      "trigger": "push",
       "config": {
         "deploymentType": "server",
         "host": "43.205.239.209",
