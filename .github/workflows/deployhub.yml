@@ -15,7 +15,8 @@ on:
         required: false
         type: choice
         options:
-          - default
+          - development
+          - production
           - all
 jobs:
   deploy:
@@ -35,7 +36,7 @@ jobs:
       - name: Build (and auto-deploy push-triggered envs)
         run: node ./node_modules/@akash-chowdhury-24/deployhub/src/cli/index.js build
         env:
-          DEPLOYHUB_ENV: default
+          DEPLOYHUB_ENV: development
           AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
@@ -48,10 +49,21 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
+          PRODUCTION_SSH_HOST: ${{ secrets.PRODUCTION_SSH_HOST }}
+          PRODUCTION_SSH_USER: ${{ secrets.PRODUCTION_SSH_USER }}
+          PRODUCTION_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+          PRODUCTION_SSH_SSH_PORT: ${{ secrets.PRODUCTION_SSH_SSH_PORT }}
+          PRODUCTION_SSH_DEPLOY_PATH: ${{ secrets.PRODUCTION_SSH_DEPLOY_PATH }}
+          PRODUCTION_SSH_APP_NAME: ${{ secrets.PRODUCTION_SSH_APP_NAME }}
+          PRODUCTION_SSH_PORT: ${{ secrets.PRODUCTION_SSH_PORT }}
+          PRODUCTION_EC2_INSTANCE_ID: ${{ secrets.PRODUCTION_EC2_INSTANCE_ID }}
+          PRODUCTION_AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
+          PRODUCTION_AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
+          PRODUCTION_AWS_REGION: ${{ secrets.PRODUCTION_AWS_REGION }}
       - name: Deploy (workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
         env:
-          DEPLOYHUB_ENV: default
+          DEPLOYHUB_ENV: development
           AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
@@ -64,6 +76,17 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
+          PRODUCTION_SSH_HOST: ${{ secrets.PRODUCTION_SSH_HOST }}
+          PRODUCTION_SSH_USER: ${{ secrets.PRODUCTION_SSH_USER }}
+          PRODUCTION_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+          PRODUCTION_SSH_SSH_PORT: ${{ secrets.PRODUCTION_SSH_SSH_PORT }}
+          PRODUCTION_SSH_DEPLOY_PATH: ${{ secrets.PRODUCTION_SSH_DEPLOY_PATH }}
+          PRODUCTION_SSH_APP_NAME: ${{ secrets.PRODUCTION_SSH_APP_NAME }}
+          PRODUCTION_SSH_PORT: ${{ secrets.PRODUCTION_SSH_PORT }}
+          PRODUCTION_EC2_INSTANCE_ID: ${{ secrets.PRODUCTION_EC2_INSTANCE_ID }}
+          PRODUCTION_AWS_ACCESS_KEY_ID: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
+          PRODUCTION_AWS_SECRET_ACCESS_KEY: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
+          PRODUCTION_AWS_REGION: ${{ secrets.PRODUCTION_AWS_REGION }}
         run: |
           ENV_INPUT="${{ inputs.environment }}"
           if [ -z "$ENV_INPUT" ] || [ "$ENV_INPUT" = "all" ]; then

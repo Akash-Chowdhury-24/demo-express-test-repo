@@ -6,21 +6,40 @@
   "storage": [
     "aws"
   ],
-  "defaultEnvironment": "default",
-  "unprefixedSecretEnvironment": "default",
+  "defaultEnvironment": "development",
+  "unprefixedSecretEnvironment": "development",
   "legacyHistoryMigrated": true,
   "environments": {
-    "default": {
+    "development": {
       "enabled": true,
       "method": "ec2",
       "trigger": "push",
       "config": {
         "deploymentType": "server",
-        "host": "43.205.116.137",
+        "host": "13.233.88.155",
         "user": "ec2-user",
-        "keyPath": "C:\\User\\diabu\\Downloads\\deployhub test key pair.pem",
+        "keyPath": "C:\\Users\\diabu\\Downloads\\deployhub test key pair.pem",
         "sshPort": 22,
         "ec2InstanceId": "i-0dbb3364bdbee43a5",
+        "awsRegion": "ap-south-1",
+        "deployPath": "/var/www/demo-express-project",
+        "path": "/var/www/demo-express-project",
+        "appName": "demo-express-project",
+        "framework": "express",
+        "port": 3000
+      }
+    },
+    "production": {
+      "enabled": true,
+      "method": "ec2",
+      "trigger": "manual",
+      "config": {
+        "deploymentType": "server",
+        "host": "43.205.239.209",
+        "user": "ec2-user",
+        "keyPath": "C:/Users/diabu/Downloads/deployhub test key pair.pem",
+        "sshPort": 22,
+        "ec2InstanceId": "i-0fcd2461df17b1f2f",
         "awsRegion": "ap-south-1",
         "deployPath": "/var/www/demo-express-project",
         "path": "/var/www/demo-express-project",
@@ -31,7 +50,7 @@
     }
   },
   "healthCheck": {
-    "url": "http://43.205.116.137:3000/health",
+    "url": "",
     "timeout": 30
   },
   "notifications": {
@@ -43,7 +62,7 @@
     "test": true,
     "docker": false,
     "deploy": true,
-    "verify": true,
+    "verify": false,
     "notify": false
   },
   "artifactRetention": 10,
