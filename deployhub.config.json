@@ -31,7 +31,7 @@
     }
   },
   "healthCheck": {
-    "url": "http://localhost:3000/health",
+    "url": "http://43.205.116.137:3000/health",
     "timeout": 30
   },
   "notifications": {
