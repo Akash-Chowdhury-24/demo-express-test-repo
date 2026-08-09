@@ -16,11 +16,11 @@
       "trigger": "push",
       "config": {
         "deploymentType": "server",
-        "host": "3.109.5.217",
+        "host": "43.205.116.137",
         "user": "ec2-user",
         "keyPath": "C:\\User\\diabu\\Downloads\\deployhub test key pair.pem",
         "sshPort": 22,
-        "ec2InstanceId": "i-0c72f186b2a641fc0",
+        "ec2InstanceId": "i-0dbb3364bdbee43a5",
         "awsRegion": "ap-south-1",
         "deployPath": "/var/www/demo-express-project",
         "path": "/var/www/demo-express-project",
